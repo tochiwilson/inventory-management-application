@@ -2,6 +2,7 @@ from inventory import Inventory
 from product import Product
 from category import Category
 
+
 # Inventory Management Application
 
 # Description:
@@ -30,36 +31,37 @@ def main():
 
         choice = input("Enter your choice: ")
 
-        if choice == "1":
-            name = input("Enter product name: ")
-            price = float(input("Enter product price: "))
-            stock = int(input("Enter stock quantity: "))
-            print("Choose a category from the following:")
-            for c in Category:
-                print(f"- {c.value.capitalize()}")
-            category = input("Enter product category: ").lower()
-            inventory.add_product(name, price, stock, category)
-        elif choice == "2":
-            name = input("Enter the name of the product to edit: ")
-            inventory.edit_product(name)
-        elif choice == "3":
-            name = input("Enter the name of the product to restock: ")
-            quantity = int(input("Enter quantity to add: "))
-            inventory.restock_product(name, quantity)
-        elif choice == "4":
-            name = input("Enter the name of the product to reduce stock: ")
-            quantity = int(input("Enter quantity to reduce: "))
-            inventory.reduce_stock(name, quantity)
-        elif choice == "5":
-            threshold = int(input("Enter stock threshold: "))
-            inventory.generate_low_stock_report(threshold)
-        elif choice == "6":
-            inventory.list_products()
-        elif choice == "7":
-            print("Exiting... Goodbye!")
-            break
-        else:
-            print("Invalid choice. Please try again.")
+        match choice:
+            case "1":
+                name = input("Enter product name: ")
+                price = float(input("Enter product price: "))
+                stock = int(input("Enter stock quantity: "))
+                print("Choose a category from the following:")
+                for c in Category:
+                    print(f"- {c.value.capitalize()}")
+                category = input("Enter product category: ").lower()
+                inventory.add_product(name, price, stock, category)
+            case "2":
+                name = input("Enter the name of the product to edit: ")
+                inventory.edit_product(name)
+            case "3":
+                name = input("Enter the name of the product to restock: ")
+                quantity = int(input("Enter quantity to add: "))
+                inventory.restock_product(name, quantity)
+            case "4":
+                name = input("Enter the name of the product to reduce stock: ")
+                quantity = int(input("Enter quantity to reduce: "))
+                inventory.reduce_stock(name, quantity)
+            case "5":
+                threshold = int(input("Enter stock threshold: "))
+                inventory.generate_low_stock_report(threshold)
+            case "6":
+                inventory.list_products()
+            case "7":
+                print("Exiting... Goodbye!")
+                break
+            case _:
+                print("Invalid choice. Please try again.")
 
 
 if __name__ == "__main__":
