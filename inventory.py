@@ -58,5 +58,5 @@ class Inventory:
             print("No products in inventory.")
         else:
             print("\nCurrent Inventory:")
-            for product in self.products:
-                print(product)
+            for idx, product in enumerate(self.products):
+                print(f"{idx + 1}. {product}")
