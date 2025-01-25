@@ -46,7 +46,7 @@ class Inventory:
                     print("Quantity must be greater than 0.")
                     return
                 if product.stock - quantity < 0:
-                    print(f"Insufficient stock to reduce for '{name}'. Curret stock: {product.stock}")
+                    print(f"Insufficient stock to reduce for '{name}'. Current stock: {product.stock}")
                     return
                 product.stock -= quantity
                 print(f"Stock reduced. New stock for '{name}': {product.stock}")

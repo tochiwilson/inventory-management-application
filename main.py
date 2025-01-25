@@ -94,7 +94,7 @@ def read_file(filename, inventory):
                         continue
 
                     if stock <= 0:
-                        print(f"Stock muzst be greater than 0. Skipping")
+                        print(f"Stock must be greater than 0. Skipping")
                         continue
 
                     if category not in Category._value2member_map_:
