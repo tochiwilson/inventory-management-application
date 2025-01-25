@@ -26,26 +26,31 @@ class Inventory:
                     print(f"Invalid category. Keeping the current category: {product.category}.")
                 print("Product updated successfully.")
                 return
-        print("Product not found.")
+        print(f"Product {name} not found.")
 
     def restock_product(self, name, quantity):
         for product in self.products:
             if product.name == name:
+                if quantity <= 0:
+                    print("Quantity must be greater than 0.")
+                    return
                 product.stock += quantity
                 print(f"Stock updated. New stock for '{name}': {product.stock}")
                 return
-        print("Product not found.")
+        print(f"Product {name} not found.")
 
     def reduce_stock(self, name, quantity):
         for product in self.products:
             if product.name == name:
-                if product.stock >= quantity:
-                    product.stock -= quantity
-                    print(f"Stock reduced. New stock for '{name}': {product.stock}")
-                else:
-                    print("Not enough stock.")
-                return
-        print("Product not found.")
+                if quantity <= 0:
+                    print("Quantity must be greater than 0.")
+                    return
+                if product.stock - quantity < 0:
+                    print(f"Insufficient stock to reduce for '{name}'. Curret stock: {product.stock}")
+                    return
+                product.stock -= quantity
+                print(f"Stock reduced. New stock for '{name}': {product.stock}")
+        print(f"Product {name} not found.")
 
     def generate_low_stock_report(self, threshold):
         print("\nLow Stock Report:")
