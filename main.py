@@ -1,6 +1,7 @@
 from inventory import Inventory
 from product import Product
 from category import Category
+import csv
 
 
 # Inventory Management Application
@@ -27,7 +28,8 @@ def main():
         print("4. Reduce Stock")
         print("5. Generate Low Stock Report")
         print("6. List Products")
-        print("7. Exit")
+        print("7. Bulk Upload via CSV")
+        print("8. Exit")
 
         choice = input("Enter your choice: ")
 
@@ -58,10 +60,55 @@ def main():
             case "6":
                 inventory.list_products()
             case "7":
+                file_name = input("Enter the filename (exclude .csv): ")
+                read_file(filename=f"{file_name}.csv", inventory=inventory)
+            case "8":
                 print("Exiting... Goodbye!")
                 break
             case _:
                 print("Invalid choice. Please try again.")
+
+
+def read_file(filename, inventory):
+    try:
+        with open(filename, 'r') as csv_file:
+            csv_reader = csv.DictReader(csv_file)
+
+            for row in csv_reader:
+                # Validate the rows
+                name = row.get("name")
+                price = row.get("price")
+                stock = row.get("stock")
+                category = row.get("category")
+
+                if not name or not price or not stock or not category:
+                    print(f"Skipping row due to missing fields: {row}")
+                    continue
+
+                try:
+                    price = float(price)
+                    stock = int(stock)
+
+                    if price <= 0:
+                        print(f"Price must be greater than 0. Skipping")
+                        continue
+
+                    if stock <= 0:
+                        print(f"Stock muzst be greater than 0. Skipping")
+                        continue
+
+                    if category not in Category._value2member_map_:
+                        print(f"Invalid category '{category}' for product '{name}'. Skipping")
+                        continue
+
+                    # Add product to Inventory
+                    inventory.add_product(name, price, stock, category)
+                except ValueError as e:
+                    print(f"Error processing row {row}: {e}")
+                    continue
+            print("Bulk upload complete!")
+    except FileNotFoundError:
+        print(f"Error: File '{filename}' not found.")
 
 
 if __name__ == "__main__":
