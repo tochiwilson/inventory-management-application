@@ -28,6 +28,19 @@ class Inventory:
                 return
         print(f"Product {name} not found.")
 
+    def delete_product(self, name):
+        for product in self.products:
+            if product.name == name:
+                confirm = input(f"Are you sure you want to delete '{product.name}'? (y/n)").lower()
+                if confirm == "y":
+                    self.products.remove(product)
+                    print("Product deleted successfully.")
+                    return
+                else:
+                    print(f"Deletion of '{product.name}' canceled.")
+                    return
+        print(f"Product {name} not found.")
+
     def restock_product(self, name, quantity):
         for product in self.products:
             if product.name == name:

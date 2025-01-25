@@ -29,13 +29,14 @@ def main():
         print("5. Generate Low Stock Report")
         print("6. List Products")
         print("7. Bulk Upload via CSV")
-        print("8. Exit")
+        print("8. Delete Product")
+        print("9. Exit")
 
         choice = input("Enter your choice: ")
 
         match choice:
             case "1":
-                name = input("Enter product name: ")
+                name = input("Enter product name: ").capitalize()
                 price = float(input("Enter product price: "))
                 stock = int(input("Enter stock quantity: "))
                 print("Choose a category from the following:")
@@ -44,14 +45,14 @@ def main():
                 category = input("Enter product category: ").lower()
                 inventory.add_product(name, price, stock, category)
             case "2":
-                name = input("Enter the name of the product to edit: ")
+                name = input("Enter the name of the product to edit: ").capitalize()
                 inventory.edit_product(name)
             case "3":
-                name = input("Enter the name of the product to restock: ")
+                name = input("Enter the name of the product to restock: ").capitalize()
                 quantity = int(input("Enter quantity to add: "))
                 inventory.restock_product(name, quantity)
             case "4":
-                name = input("Enter the name of the product to reduce stock: ")
+                name = input("Enter the name of the product to reduce stock: ").capitalize()
                 quantity = int(input("Enter quantity to reduce: "))
                 inventory.reduce_stock(name, quantity)
             case "5":
@@ -63,6 +64,9 @@ def main():
                 file_name = input("Enter the filename (exclude .csv): ")
                 read_file(filename=f"{file_name}.csv", inventory=inventory)
             case "8":
+                name = input("Enter the name of the product to delete: ").capitalize()
+                inventory.delete_product(name)
+            case "9":
                 print("Exiting... Goodbye!")
                 break
             case _:
