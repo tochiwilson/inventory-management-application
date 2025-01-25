@@ -1,0 +1,30 @@
+name,price,stock,category
+Laptop,1200.99,10,electronics
+Shirt,19.99,50,clothing
+Apple,,100,food
+Book,15.49,25,books
+Teddy Bear,-24.99,30,toys
+Smartphone,699.99,15,electronics
+Jeans,39.99,forty,clothing
+Orange,0.89,200,food
+Notebook,2.49,-5,books
+Lego Set,89.99,20,toys
+Headphones,149.99,12,gadgets
+Jacket,59.99,,clothing
+Banana,0.79,150,fruit
+E-reader,129.99,10,books
+Puzzle,19.99,35,toys
+Tablet,399.99,8,electronics
+Sneakers,79.99,20,clothing
+Milk,1.19,50,food
+Cookbook,,10,books
+Action Figure,14.99,-10,toys
+Gaming Console,499.99,5,electronics
+Monitor,199.99,abc,electronics
+Camera,599.99,10,electronics
+T-shirt,15.99,,clothing
+Chocolate,1.49,100,food
+Notebook,2.99,25,books
+Doll,14.99,50,toy
+Smartwatch,299.99,-2,electronics
+Pencil,0.49,1000,stationery
