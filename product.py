@@ -10,4 +10,4 @@ class Product:
         self.category = category
 
     def __str__(self):
-        return f"{self.name} | {self.category} | €{self.price:.2f} | Stock: {self.stock}"
+        return f"{self.name} | " +  f"{self.category}".capitalize() + f" | €{self.price:.2f} | Stock: {self.stock}"
